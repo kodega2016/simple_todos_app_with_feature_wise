@@ -1,4 +1,4 @@
-import 'package:explore_provider/src/features/todos/presentation/view/todos_screen.dart';
+import 'package:explore_provider/src/features/todos/presentation/views/todos_screen.dart';
 import 'package:flutter/material.dart';
 
 class MyTodoApp extends StatelessWidget {

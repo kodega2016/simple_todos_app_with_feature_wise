@@ -1,5 +1,5 @@
-import 'package:explore_provider/src/features/todos/presentation/provider/todos_provider.dart';
-import 'package:explore_provider/src/features/todos/presentation/view/todos_view.dart';
+import 'package:explore_provider/src/features/todos/presentation/providers/todos_provider.dart';
+import 'package:explore_provider/src/features/todos/presentation/views/todos_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,8 +1,9 @@
-import 'package:explore_provider/src/features/todos/presentation/provider/todos_provider.dart';
-import 'package:explore_provider/src/features/todos/presentation/view/todos_form_screen.dart';
+import 'package:explore_provider/src/features/todos/presentation/providers/todos_provider.dart';
 import 'package:explore_provider/src/features/todos/presentation/widgets/todo_list_card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'todos_form_screen.dart';
 
 class TodosView extends StatelessWidget {
   const TodosView({Key? key}) : super(key: key);
