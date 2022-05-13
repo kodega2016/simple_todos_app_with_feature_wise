@@ -1,6 +1,7 @@
-import 'package:explore_provider/src/features/todos/presentation/providers/todos_provider.dart';
+import 'package:explore_provider/src/features/todos/presentation/providers/todos_state_notifier_provider.dart';
 import 'package:explore_provider/src/features/todos/presentation/widgets/todo_list_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_state_notifier/flutter_state_notifier.dart';
 import 'package:provider/provider.dart';
 
 import 'todos_form_screen.dart';
@@ -22,8 +23,9 @@ class TodosView extends StatelessWidget {
             MaterialPageRoute(
               fullscreenDialog: true,
               builder: (_) {
-                return ChangeNotifierProvider<TodosProvider>.value(
-                  value: context.read<TodosProvider>(),
+                return StateNotifierProvider<TodosStateNotifierProvider,
+                    TodosState>.value(
+                  value: context.read<TodosStateNotifierProvider>(),
                   child: const TodosFormScreen(),
                 );
               },
@@ -31,7 +33,8 @@ class TodosView extends StatelessWidget {
           );
         },
       ),
-      body: Consumer<TodosProvider>(
+      body: StateNotifierBuilder<TodosState>(
+        stateNotifier: context.read<TodosStateNotifierProvider>(),
         builder: (context, provider, _) {
           return Padding(
             padding: const EdgeInsets.all(10.0),
@@ -41,7 +44,7 @@ class TodosView extends StatelessWidget {
                   )
                 : RefreshIndicator(
                     onRefresh: () async {
-                      context.read<TodosProvider>().init();
+                      context.read<TodosStateNotifierProvider>().getAllTodos();
                     },
                     child: ListView.builder(
                       itemCount: provider.todos.length,
@@ -55,9 +58,11 @@ class TodosView extends StatelessWidget {
                               MaterialPageRoute(
                                 fullscreenDialog: true,
                                 builder: (_) {
-                                  return ChangeNotifierProvider<
-                                      TodosProvider>.value(
-                                    value: context.read<TodosProvider>(),
+                                  return StateNotifierProvider<
+                                      TodosStateNotifierProvider,
+                                      TodosState>.value(
+                                    value: context
+                                        .read<TodosStateNotifierProvider>(),
                                     child: TodosFormScreen(
                                       todo: todo,
                                     ),
@@ -67,7 +72,9 @@ class TodosView extends StatelessWidget {
                             );
                           },
                           onDelete: (todo) {
-                            context.read<TodosProvider>().removeTodo(_todo.id);
+                            context
+                                .read<TodosStateNotifierProvider>()
+                                .removeTodo(_todo.id);
                           },
                         );
                       },

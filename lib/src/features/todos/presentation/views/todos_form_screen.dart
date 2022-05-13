@@ -1,5 +1,5 @@
 import 'package:explore_provider/src/features/todos/domain/todo.dart';
-import 'package:explore_provider/src/features/todos/presentation/providers/todos_provider.dart';
+import 'package:explore_provider/src/features/todos/presentation/providers/todos_state_notifier_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -90,8 +90,10 @@ class _TodosFormScreenState extends State<TodosFormScreen> {
         description: _description!,
       );
       widget.todo == null
-          ? context.read<TodosProvider>().addTodo(_todo)
-          : context.read<TodosProvider>().updateTodo(_todo, widget.todo!.id);
+          ? context.read<TodosStateNotifierProvider>().addTodo(_todo)
+          : context
+              .read<TodosStateNotifierProvider>()
+              .updateTodo(_todo, widget.todo!.id);
       Navigator.pop(context);
     }
   }
