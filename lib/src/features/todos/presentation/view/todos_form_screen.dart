@@ -85,7 +85,7 @@ class _TodosFormScreenState extends State<TodosFormScreen> {
     if (_formKey.currentState?.validate() ?? false) {
       _formKey.currentState!.validate();
       final _todo = Todo(
-        id: DateTime.now().toIso8601String(),
+        id: widget.todo?.id ?? DateTime.now().toIso8601String(),
         title: _title!,
         description: _description!,
       );

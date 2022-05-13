@@ -16,9 +16,13 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$Todo {
+  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
+  @HiveField(1)
   String get title => throw _privateConstructorUsedError;
+  @HiveField(2)
   String get description => throw _privateConstructorUsedError;
+  @HiveField(3)
   bool get completed => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -29,7 +33,11 @@ mixin _$Todo {
 abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res>;
-  $Res call({String id, String title, String description, bool completed});
+  $Res call(
+      {@HiveField(0) String id,
+      @HiveField(1) String title,
+      @HiveField(2) String description,
+      @HiveField(3) bool completed});
 }
 
 /// @nodoc
@@ -73,7 +81,11 @@ abstract class _$$_TodoCopyWith<$Res> implements $TodoCopyWith<$Res> {
   factory _$$_TodoCopyWith(_$_Todo value, $Res Function(_$_Todo) then) =
       __$$_TodoCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String title, String description, bool completed});
+  $Res call(
+      {@HiveField(0) String id,
+      @HiveField(1) String title,
+      @HiveField(2) String description,
+      @HiveField(3) bool completed});
 }
 
 /// @nodoc
@@ -117,19 +129,23 @@ class __$$_TodoCopyWithImpl<$Res> extends _$TodoCopyWithImpl<$Res>
 
 class _$_Todo implements _Todo {
   _$_Todo(
-      {required this.id,
-      required this.title,
-      required this.description,
-      this.completed = false});
+      {@HiveField(0) required this.id,
+      @HiveField(1) required this.title,
+      @HiveField(2) required this.description,
+      @HiveField(3) this.completed = false});
 
   @override
+  @HiveField(0)
   final String id;
   @override
+  @HiveField(1)
   final String title;
   @override
+  @HiveField(2)
   final String description;
   @override
   @JsonKey()
+  @HiveField(3)
   final bool completed;
 
   @override
@@ -165,18 +181,22 @@ class _$_Todo implements _Todo {
 
 abstract class _Todo implements Todo {
   factory _Todo(
-      {required final String id,
-      required final String title,
-      required final String description,
-      final bool completed}) = _$_Todo;
+      {@HiveField(0) required final String id,
+      @HiveField(1) required final String title,
+      @HiveField(2) required final String description,
+      @HiveField(3) final bool completed}) = _$_Todo;
 
   @override
+  @HiveField(0)
   String get id => throw _privateConstructorUsedError;
   @override
+  @HiveField(1)
   String get title => throw _privateConstructorUsedError;
   @override
+  @HiveField(2)
   String get description => throw _privateConstructorUsedError;
   @override
+  @HiveField(3)
   bool get completed => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)

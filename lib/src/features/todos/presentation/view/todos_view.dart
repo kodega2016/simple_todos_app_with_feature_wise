@@ -38,18 +38,15 @@ class TodosView extends StatelessWidget {
                 ? const Center(
                     child: Text('No todos added yet.'),
                   )
-                : ListView.builder(
-                    itemCount: provider.todos.length,
-                    itemBuilder: (context, i) {
-                      final _todo = provider.todos[i];
-                      return Dismissible(
-                        key: ValueKey(_todo.id),
-                        direction: DismissDirection.endToStart,
-                        background: Container(color: Colors.red),
-                        onDismissed: (direction) {
-                          context.read<TodosProvider>().removeTodo(_todo.id);
-                        },
-                        child: TodoListCard(
+                : RefreshIndicator(
+                    onRefresh: () async {
+                      context.read<TodosProvider>().init();
+                    },
+                    child: ListView.builder(
+                      itemCount: provider.todos.length,
+                      itemBuilder: (context, i) {
+                        final _todo = provider.todos[i];
+                        return TodoListCard(
                           todo: _todo,
                           onTap: (todo) {
                             Navigator.push(
@@ -68,9 +65,12 @@ class TodosView extends StatelessWidget {
                               ),
                             );
                           },
-                        ),
-                      );
-                    },
+                          onDelete: (todo) {
+                            context.read<TodosProvider>().removeTodo(_todo.id);
+                          },
+                        );
+                      },
+                    ),
                   ),
           );
         },
